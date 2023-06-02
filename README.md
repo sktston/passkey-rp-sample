@@ -8,6 +8,8 @@ By design, most of the features are implemented in the [SK telecom's Passkey Pla
 
 We have designed and implemented this application so that any RP developers can understand the way how to integrate with [SK telecom's Passkey Platform](https://passkey.daplatform.kr/docs/api.html) easily.
 > **NOTE**: You need to carefully design and implement WebAuthn and Passkey integration if you would like to introduce them to your real products.
+>
+> For instance, there is no persistent repository in this sample app to manage users' Webauthn credentials and there is no authenticated session management as well.
 
 ## Features
 
