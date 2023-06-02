@@ -1,0 +1,30 @@
+{
+  "rp": {
+    "name": "Example Corporation"
+  },
+  "user": {
+    "id": "S3932ee31vKEC0JtJMIQ",
+    "name": "johndoe@example.com",
+    "displayName": "John Doe"
+  },
+  "challenge": "uhUjPNlZfvn7onwuhNdsLPkkE5Fv-lUN",
+  "pubKeyCredParams": [
+    {
+      "type": "public-key",
+      "alg": -7
+    }
+  ],
+  "timeout": 10000,
+  "excludeCredentials": [
+    {
+      "type": "public-key",
+      "id": "opQf1WmYAa5aupUKJIQp"
+    }
+  ],
+  "authenticatorSelection": {
+    "requireResidentKey": false,
+    "authenticatorAttachment": "cross-platform",
+    "userVerification": "preferred"
+  },
+  "attestation": "direct"
+}

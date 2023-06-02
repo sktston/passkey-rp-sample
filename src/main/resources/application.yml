@@ -1,0 +1,28 @@
+conformance:
+  base-url: http://localhost:8081
+  vendor-name: SK Telecom
+logging:
+  level:
+    web: debug
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} | %clr(%-5level) | %clr(%-40.40logger{39}){cyan} | %clr(%X{X-Webauthn-TraceId}){magenta} | %msg%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
+    file: ${logging.pattern.console}
+server:
+  port: 8081
+spring:
+  output:
+    ansi:
+      enabled: always
+  thymeleaf:
+    cache: false
+webauthn:
+  rp:
+    id: localhost
+  server:
+    api-version: v1
+    base-url: http://localhost:8080
+    url-path:
+      registration-request: /${webauthn.server.api-version}/registration/request
+      registration-response: /${webauthn.server.api-version}/registration/response
+      authentication-request: /${webauthn.server.api-version}/authentication/request
+      authentication-response: /${webauthn.server.api-version}/authentication/response

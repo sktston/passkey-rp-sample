@@ -1,0 +1,10 @@
+{
+  "username": "johndoe@example.com",
+  "displayName": "John Doe",
+  "authenticatorSelection": {
+    "requireResidentKey": false,
+    "authenticatorAttachment": "cross-platform",
+    "userVerification": "preferred"
+  },
+  "attestation": "direct"
+}

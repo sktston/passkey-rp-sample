@@ -1,0 +1,12 @@
+{
+  "challenge": "6283u0svT-YIF3pSolzkQHStwkJCaLKx",
+  "timeout": 20000,
+  "rpId": "example.com",
+  "allowCredentials": [
+    {
+      "id": "m7xl_TkTcCe0WcXI2M-4ro9vJAuwcj4m",
+      "type": "public-key"
+    }
+  ],
+  "userVerification": "required"
+}

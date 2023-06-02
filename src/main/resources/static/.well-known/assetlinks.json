@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.sktelecom.authentication.android.passkey",
+      "sha256_cert_fingerprints": [
+        "0A:E4:55:97:86:D5:87:56:F8:35:13:6B:EB:BE:B7:FE:7C:A6:40:ED:33:CB:5C:9B:D8:8E:96:87:FB:16:BD:88"
+      ]
+    }
+  }
+]
