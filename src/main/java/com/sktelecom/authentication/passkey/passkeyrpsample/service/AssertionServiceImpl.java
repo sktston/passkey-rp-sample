@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 /**
  * {@inheritDoc}
  *
- * Assertion service implementation interacting with Passkey Server
+ * Assertion service implementation interacting with WebAuthn server
  */
 @RequiredArgsConstructor
 @Service
@@ -44,10 +44,10 @@ public class AssertionServiceImpl implements AssertionService {
     @Override
     public WebAuthnServerResponse<AssertionOptions> getOptions(AssertionOptionsServerRequest optionsRequest)
         throws WebAuthnServerException {
-        // construct request for webauthn server
+        // construct request for WebAuthn server
         AuthenticationOptionsServerRequestDto requestDto =
             assertionOptionsServerRequestMapper.toWebauthnServerDto(optionsRequest);
-        // call webauthn server and get response
+        // call WebAuthn server and get response
         ServerResponseDto<ChallengeDto> response = webAuthnRpRestClient.getAuthenticationOptions(requestDto);
         final String sessionId = response.getData().getTransactionId();
         final String options = response.getData().getOptions();
@@ -63,7 +63,7 @@ public class AssertionServiceImpl implements AssertionService {
 
         // convert to AssertionOptions to interact with conformance tool and interop web app
         AssertionOptions assertionOptions = assertionOptionsMapper.toRpServerDto(webauthnServerOptions);
-        // clear all received extensions from the webauthn server,
+        // clear all received extensions from the WebAuthn server,
         // since the conformance tool client does not expect the such extensions
         assertionOptions.getExtensions().clear();
         if (optionsRequest.getExtensions() != null) {
@@ -81,7 +81,7 @@ public class AssertionServiceImpl implements AssertionService {
     @Override
     public void handleResult(AuthenticatorResponseServerRequest<AssertionResponse> result, String requestId)
         throws WebAuthnServerException {
-        // construct request for webauthn server
+        // construct request for WebAuthn server
         PublicKeyCredentialDto<AssertionResponseDto> publicKeyCredentialDto =
             authenticatorAssertionResponseServerRequestMapper.toWebauthnServerDto(result);
         AuthenticationResultsServerRequestDto requestDto =
@@ -92,10 +92,10 @@ public class AssertionServiceImpl implements AssertionService {
     @Override
     public WebAuthnServerResponse<AssertionOptions> getLv3Options(AssertionOptionsServerRequestLv3 optionsRequest)
         throws WebAuthnServerException {
-        // construct request for webauthn server
+        // construct request for WebAuthn server
         AuthenticationOptionsServerRequestDto requestDto =
             assertionOptionsServerRequestMapper.toWebauthnServerDtoLv3(optionsRequest);
-        // call webauthn server and get response
+        // call WebAuthn server and get response
         ServerResponseDto<ChallengeDto> response = webAuthnRpRestClient.getAuthenticationOptions(requestDto);
         final String sessionId = response.getData().getTransactionId();
         final String options = response.getData().getOptions();
@@ -118,7 +118,7 @@ public class AssertionServiceImpl implements AssertionService {
     @Override
     public void handleLv3Result(AuthenticatorResponseServerRequestLv3<AssertionResponse> result, String requestId)
         throws WebAuthnServerException {
-        // construct request for webauthn server
+        // construct request for WebAuthn server
         PublicKeyCredentialDto<AssertionResponseDto> publicKeyCredentialDto =
             authenticatorAssertionResponseServerRequestMapper.toWebauthnServerDtoLv3(result);
         AuthenticationResultsServerRequestDto requestDto =

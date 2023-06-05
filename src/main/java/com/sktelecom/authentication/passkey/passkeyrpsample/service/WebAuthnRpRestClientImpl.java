@@ -8,8 +8,8 @@ import com.sktelecom.authentication.fido2.server.dto.common.ServerResponseDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationOptionsServerRequestDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultsServerRequestDto;
-import com.sktelecom.authentication.passkey.passkeyrpsample.configuration.WebauthnProperties;
-import com.sktelecom.authentication.passkey.passkeyrpsample.configuration.WebauthnProperties.WebauthnServerProperties;
+import com.sktelecom.authentication.passkey.passkeyrpsample.configuration.WebAuthnProperties;
+import com.sktelecom.authentication.passkey.passkeyrpsample.configuration.WebAuthnProperties.WebauthnServerProperties;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -24,14 +24,14 @@ import org.springframework.web.client.RestTemplate;
  */
 @Component
 public class WebAuthnRpRestClientImpl implements WebAuthnRpRestClient {
-    // rest template for Webauthn server
+    // rest template for WebAuthn server
     private final RestTemplate restTemplate;
     private String registrationRequestUrl;
     private String registrationResponseUrl;
     private String authenticationRequestUrl;
     private String authenticationResponseUrl;
 
-    public WebAuthnRpRestClientImpl(WebauthnProperties webauthnProperties, RestTemplate restTemplate) {
+    public WebAuthnRpRestClientImpl(WebAuthnProperties webauthnProperties, RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
         // initialize Webauthn server URLs
         initializeRequestUrls(webauthnProperties.getServer());

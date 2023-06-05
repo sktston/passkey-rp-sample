@@ -15,7 +15,7 @@ import org.springframework.validation.annotation.Validated;
 @ConfigurationProperties(prefix = "webauthn")
 @Value
 @Validated
-public class WebauthnProperties {
+public class WebAuthnProperties {
     @NotNull
     @Valid
     RpProperties rp;

@@ -10,7 +10,7 @@ import com.sktelecom.authentication.passkey.passkeyrpsample.model.transport.lv3.
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.transport.lv3.AuthenticatorResponseServerRequestLv3;
 
 /**
- * Assertion (passkey authentication) service interface
+ * Assertion (WebAuthn authentication) service interface
  */
 public interface AssertionService {
     WebAuthnServerResponse<AssertionOptions> getOptions(AssertionOptionsServerRequest optionsRequest)

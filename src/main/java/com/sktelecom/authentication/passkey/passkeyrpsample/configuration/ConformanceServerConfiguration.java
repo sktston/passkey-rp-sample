@@ -23,7 +23,7 @@ import org.springframework.web.filter.CommonsRequestLoggingFilter;
 @Configuration
 @RequiredArgsConstructor
 public class ConformanceServerConfiguration {
-    private final WebauthnProperties webauthnProperties;
+    private final WebAuthnProperties webauthnProperties;
 
     @Bean
     ObjectMapper objectMapper() {
@@ -90,7 +90,7 @@ public class ConformanceServerConfiguration {
 
     @Bean
     ClientHttpRequestInitializer webauthnClientHttpRequestInitializer() {
-        return new WebauthnClientHttpRequestInitializer(this.webauthnProperties);
+        return new WebAuthnClientHttpRequestInitializer(this.webauthnProperties);
     }
 
     private void customizeRestTemplate(RestTemplate restTemplate) {

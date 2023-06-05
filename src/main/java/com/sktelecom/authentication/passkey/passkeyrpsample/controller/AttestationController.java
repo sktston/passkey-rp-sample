@@ -1,6 +1,5 @@
 package com.sktelecom.authentication.passkey.passkeyrpsample.controller;
 
-import com.sktelecom.authentication.passkey.passkeyrpsample.mapper.authentication.AssertionOptionsServerRequestMapper;
 import com.sktelecom.authentication.passkey.passkeyrpsample.mapper.registration.AttestationOptionsServerRequestMapper;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.WebAuthnServerResponse;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.transport.AttestationOptions;
@@ -58,7 +57,7 @@ public class AttestationController {
     }
 
     /**
-     * Handler to start webauthn registration process
+     * Handler to start WebAuthn registration process
      * @param request parameters for registration options, you may use your own model,
      *                most of the cases, such values are populated in the backend.
      *                Username and user id values should be obtained from the authenticated session.
@@ -75,7 +74,7 @@ public class AttestationController {
         WebAuthnServerResponse<AttestationOptions> optionsResponse = attestationService.getLv3Options(request);
         AttestationOptions options = optionsResponse.getOptions();
 
-        // You might have different way to manage the passkey registration session (transaction)
+        // You might have different way to manage the WebAuthn registration session (transaction)
         // set cookie to track request and subsequent response for simplicity
         CookieUtil.addCookie(httpServletResponse, COOKIE_NAME, optionsResponse.getSessionId());
         return convert(options);

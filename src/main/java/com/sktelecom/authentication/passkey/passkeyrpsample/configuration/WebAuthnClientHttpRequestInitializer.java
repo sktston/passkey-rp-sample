@@ -6,12 +6,12 @@ import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.ClientHttpRequestInitializer;
 
 /**
- * Client http request initializer to set custom request headers for webauthn server
+ * Client http request initializer to set custom request headers for WebAuthn server
  */
 @RequiredArgsConstructor
-public class WebauthnClientHttpRequestInitializer implements ClientHttpRequestInitializer {
-    public static final String WEBAUTHN_RP_ID = "X-WebAuthentication-RpId";
-    private final WebauthnProperties webauthnProperties;
+public class WebAuthnClientHttpRequestInitializer implements ClientHttpRequestInitializer {
+    private static final String WEBAUTHN_RP_ID = "X-WebAuthentication-RpId";
+    private final WebAuthnProperties webauthnProperties;
 
     @Override
     public void initialize(ClientHttpRequest request) {

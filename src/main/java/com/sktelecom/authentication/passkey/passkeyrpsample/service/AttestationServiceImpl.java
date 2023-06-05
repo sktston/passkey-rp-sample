@@ -46,10 +46,10 @@ public class AttestationServiceImpl implements AttestationService {
     @Override
     public WebAuthnServerResponse<AttestationOptions> getOptions(AttestationOptionsServerRequest optionsRequest)
         throws WebAuthnServerException {
-        // construct request for webauthn server
+        // construct request for WebAuthn server
         RegistrationOptionsServerRequestDto requestDto =
             attestationOptionsServerRequestMapper.toWebauthnServerDto(optionsRequest);
-        // call webauthn server and get response
+        // call WebAuthn server and get response
         ServerResponseDto<ChallengeDto> response = webAuthnRpRestClient.getRegistrationOptions(requestDto);
         final String sessionId = response.getData().getTransactionId();
         final String options = response.getData().getOptions();
@@ -65,7 +65,7 @@ public class AttestationServiceImpl implements AttestationService {
 
         // convert to AttestationOptions to interact with conformance tool and interop web app
         AttestationOptions attestationOptions = attestationOptionsMapper.toRpServerDto(webauthnServerOptions);
-        // clear all received extensions from the webauthn server,
+        // clear all received extensions from the WebAuthn server,
         // since the conformance tool client does not expect the such extensions
         attestationOptions.getExtensions().clear();
         if (optionsRequest.getExtensions() != null) {
@@ -83,7 +83,7 @@ public class AttestationServiceImpl implements AttestationService {
     @Override
     public void handleResult(AuthenticatorResponseServerRequest<AttestationResponse> result, String requestId)
         throws WebAuthnServerException {
-        // construct request for webauthn server
+        // construct request for WebAuthn server
         PublicKeyCredentialDto<AttestationResponseDto> publicKeyCredentialDto =
             authenticatorAttestationResponseServerRequestMapper.toWebauthnServerDto(result);
         RegistrationResultsServerRequestDto requestDto =
@@ -94,10 +94,10 @@ public class AttestationServiceImpl implements AttestationService {
     @Override
     public WebAuthnServerResponse<AttestationOptions> getLv3Options(AttestationOptionsServerRequestLv3 optionsRequest)
         throws WebAuthnServerException {
-        // construct request for webauthn server
+        // construct request for WebAuthn server
         RegistrationOptionsServerRequestDto requestDto =
             attestationOptionsServerRequestMapper.toWebauthnServerDtoLv3(optionsRequest);
-        // call Passkey Server and get response
+        // call WebAuthn Server and get response
         ServerResponseDto<ChallengeDto> response = webAuthnRpRestClient.getRegistrationOptions(requestDto);
         final String sessionId = response.getData().getTransactionId();
         final String options = response.getData().getOptions();
@@ -120,7 +120,7 @@ public class AttestationServiceImpl implements AttestationService {
     @Override
     public void handleLv3Result(AuthenticatorResponseServerRequestLv3<AttestationResponseLv3> result, String requestId)
         throws WebAuthnServerException {
-        // construct request for webauthn server
+        // construct request for WebAuthn server
         PublicKeyCredentialDto<AttestationResponseDto> publicKeyCredentialDto =
             authenticatorAttestationResponseServerRequestMapper.toWebauthnServerDtoLv3(result);
         RegistrationResultsServerRequestDto requestDto =

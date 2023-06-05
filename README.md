@@ -7,9 +7,11 @@ This application does rely on the [SK telecom's Passkey Platform Server](https:/
 By design, most of the features are implemented in the [SK telecom's Passkey Platform Server](https://passkey.daplatform.kr/docs/api.html) and RPs simply introduce the features by integrating it.
 
 We have designed and implemented this application so that any RP developers can understand the way how to integrate with [SK telecom's Passkey Platform](https://passkey.daplatform.kr/docs/api.html) easily.
-> **NOTE**: You need to carefully design and implement WebAuthn and Passkey integration if you would like to introduce them to your real products.
->
-> For instance, there is no persistent repository in this sample app to manage users' Webauthn credentials and there is no authenticated session management as well.
+> **IMPORTANT**: You need to carefully design and implement WebAuthn and Passkey integration if you plan to introduce them to your real products.
+> Again, this sample is for demonstration and testing purpose. By doing so, most of the registration, authentication options are populated in the client side,
+> which is originally intended for backend server's job. You need to define your own registration, authentication policy for your cases and choose appropriate options for that policy. 
+> 
+> For the simplicity, this application des not have any persistent storage to manage users' WebAuthn credentials and there is no authenticated session management as well.
 
 ## Features
 
@@ -77,7 +79,7 @@ Discover more commands with `./graldew tasks`.
 | webauthn.server.url-path.registration-response   | Registration response endpoint.                                   | `/${webauthn.server.api-version}/registration/response`   |
 | webauthn.server.url-path.authentication-request  | Authentication request endpoint.                                  | `/${webauthn.server.api-version}/authentication/request`  |
 | webauthn.server.url-path.authentication-response | Authentication response endpoint.                                 | `/${webauthn.server.api-version}/authentication/response` |
-| webauthn.server.oauth2-protected                 | Weather the WebAuthn server API protected with OAuth2             | `false`                                                   |
+| webauthn.server.oauth2-protected                 | Whether the WebAuthn server API protected with OAuth2             | `false`                                                   |
 
 ### Spring OAuth2 Client Properties
 
@@ -103,8 +105,8 @@ spring:
             token-uri: https://daplatform.kr/oauth2/token # set oauth2 server token uri
 ```
 
-Note that you **MUST** register your application to get client_id and client_secret for WebAuthn server API authorization.
-For SK telecom Passkey Platform, the client_id **MUST** be identical to your [RP ID](https://w3c.github.io/webauthn/#rp-id).
+Note that you **MUST** register your application to get `client_id` and `client_secret` for WebAuthn server API authorization.
+For SK telecom Passkey Platform, the `client_id` **MUST** be identical to your [RP ID](https://w3c.github.io/webauthn/#rp-id).
 
 You would implement your own OAuth2 Client features instead of using Spring Security OAuth2 Client, and it's up to your choice.
 

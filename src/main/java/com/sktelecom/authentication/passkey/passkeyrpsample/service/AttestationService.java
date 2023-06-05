@@ -11,7 +11,7 @@ import com.sktelecom.authentication.passkey.passkeyrpsample.model.transport.lv3.
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.transport.lv3.AuthenticatorResponseServerRequestLv3;
 
 /**
- * Attestation (passkey authentication) service interface
+ * Attestation (WebAuthn authentication) service interface
  */
 public interface AttestationService {
     WebAuthnServerResponse<AttestationOptions> getOptions(AttestationOptionsServerRequest optionsRequest)

@@ -56,13 +56,13 @@ public class AssertionController {
     }
 
     /**
-     * Handler to start webauthn authentication process
+     * Handler to start WebAuthn authentication process
      * @param request parameters for authentication options, you may use your own model,
      *                most of the cases, such values are populated in the backend.
      *                If the server somehow identifies the user (user id) first
      *                (e.g., from the username input field or 2nd factor authentication use cases),
      *                The server needs to set identified user id within the request
-     *                so that the webauthn server only populated candidate credentials for the given user id.
+     *                so that the WebAuthn server only populated candidate credentials for the given user id.
      *                This sample application does generate user id dynamically with given username.
      *                Check this {@link AssertionOptionsServerRequestMapper#toWebauthnUserId(String username) model mapper }.
      * @param httpServletResponse servlet response
@@ -75,7 +75,7 @@ public class AssertionController {
         WebAuthnServerResponse<AssertionOptions> optionsResponse = assertionService.getLv3Options(request);
         AssertionOptions options = optionsResponse.getOptions();
 
-        // You might have different way to manage the passkey authentication session (transaction)
+        // You might have different way to manage the WebAuthn authentication session (transaction)
         // set cookie to track request and subsequent response for simplicity
         CookieUtil.addCookie(httpServletResponse, COOKIE_NAME, optionsResponse.getSessionId());
         return convert(options);

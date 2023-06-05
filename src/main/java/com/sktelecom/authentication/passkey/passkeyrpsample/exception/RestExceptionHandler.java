@@ -17,7 +17,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(RestClientException.class)
     public final ResponseEntity<Object> handleException(RestClientException ex, WebRequest request) {
         HttpHeaders headers = new HttpHeaders();
-        // if the webauthn server responses an error, consider it as internal server error
+        // if the WebAuthn server responses an error, consider it as internal server error
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         return handleExceptionInternal(ex, null, headers, status, request);
     }
