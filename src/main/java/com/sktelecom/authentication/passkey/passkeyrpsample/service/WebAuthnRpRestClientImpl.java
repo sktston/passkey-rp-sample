@@ -5,6 +5,7 @@ import com.sktelecom.authentication.fido2.server.dto.authentication.Authenticati
 import com.sktelecom.authentication.fido2.server.dto.authentication.AuthenticationResultsServerRequestDto;
 import com.sktelecom.authentication.fido2.server.dto.common.ChallengeDto;
 import com.sktelecom.authentication.fido2.server.dto.common.ServerResponseDto;
+import com.sktelecom.authentication.fido2.server.dto.credential.CredentialIdListResponseDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationOptionsServerRequestDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultsServerRequestDto;
@@ -30,6 +31,7 @@ public class WebAuthnRpRestClientImpl implements WebAuthnRpRestClient {
     private String registrationResponseUrl;
     private String authenticationRequestUrl;
     private String authenticationResponseUrl;
+    private String deleteUserUrl;
 
     public WebAuthnRpRestClientImpl(WebAuthnProperties webauthnProperties, RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -81,6 +83,17 @@ public class WebAuthnRpRestClientImpl implements WebAuthnRpRestClient {
         return response.getBody();
     }
 
+    @Override
+    public ServerResponseDto<CredentialIdListResponseDto> deleteUser(String userId) {
+        // @formatter:off
+        ResponseEntity<ServerResponseDto<CredentialIdListResponseDto>> response =
+            restTemplate.exchange(deleteUserUrl, HttpMethod.DELETE, HttpEntity.EMPTY,
+                new ParameterizedTypeReference<>() {
+                }, userId);
+        // @formatter:on
+        return response.getBody();
+    }
+
     private void initializeRequestUrls(WebauthnServerProperties serverProperties) {
         this.registrationRequestUrl = serverProperties.getBaseUrl()
             + serverProperties.getUrlPath().getRegistrationRequest();
@@ -90,5 +103,7 @@ public class WebAuthnRpRestClientImpl implements WebAuthnRpRestClient {
             + serverProperties.getUrlPath().getAuthenticationRequest();
         this.authenticationResponseUrl = serverProperties.getBaseUrl()
             + serverProperties.getUrlPath().getAuthenticationResponse();
+        this.deleteUserUrl = serverProperties.getBaseUrl()
+            + serverProperties.getUrlPath().getDeleteUser();
     }
 }

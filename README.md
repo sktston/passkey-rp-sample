@@ -79,6 +79,7 @@ Discover more commands with `./graldew tasks`.
 | webauthn.server.url-path.registration-response   | Registration response endpoint.                                   | `/${webauthn.server.api-version}/registration/response`   |
 | webauthn.server.url-path.authentication-request  | Authentication request endpoint.                                  | `/${webauthn.server.api-version}/authentication/request`  |
 | webauthn.server.url-path.authentication-response | Authentication response endpoint.                                 | `/${webauthn.server.api-version}/authentication/response` |
+| webauthn.server.url-path.delete-user             | User deletion endpoint.                                           | `/${webauthn.server.api-version}/users/{userId}`          |
 | webauthn.server.oauth2-protected                 | Whether the WebAuthn server API protected with OAuth2             | `false`                                                   |
 
 ### Spring OAuth2 Client Properties

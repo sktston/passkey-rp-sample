@@ -103,7 +103,6 @@ public class AssertionController {
             .allowCredentials(options.getAllowCredentials())
             .userVerification(options.getUserVerification())
             .extensions(options.getExtensions())
-            .status(Status.OK)
             .build();
         // @formatter:on
     }

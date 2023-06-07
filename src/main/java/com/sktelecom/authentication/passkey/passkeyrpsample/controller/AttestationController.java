@@ -106,7 +106,6 @@ public class AttestationController {
                 .authenticatorSelection(options.getAuthenticatorSelection())
                 .attestation(options.getAttestation())
                 .extensions(options.getExtensions())
-                .status(Status.OK)
                 .build();
             // @formatter:on
         }
