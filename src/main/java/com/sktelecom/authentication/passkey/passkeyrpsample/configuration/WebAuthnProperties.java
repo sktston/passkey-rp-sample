@@ -52,6 +52,10 @@ public class WebAuthnProperties {
         @NotEmpty
         String authenticationResponse;
         @NotEmpty
-        String deleteUser;
+        String user;
+        @NotEmpty
+        String userCredential;
+        @NotEmpty
+        String userCredentials;
     }
 }

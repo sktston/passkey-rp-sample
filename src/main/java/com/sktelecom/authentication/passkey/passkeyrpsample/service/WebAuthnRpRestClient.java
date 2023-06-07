@@ -4,8 +4,12 @@ import com.sktelecom.authentication.fido2.server.dto.authentication.Authenticati
 import com.sktelecom.authentication.fido2.server.dto.authentication.AuthenticationResultDto;
 import com.sktelecom.authentication.fido2.server.dto.authentication.AuthenticationResultsServerRequestDto;
 import com.sktelecom.authentication.fido2.server.dto.common.ChallengeDto;
+import com.sktelecom.authentication.fido2.server.dto.common.CredentialStatusDto;
 import com.sktelecom.authentication.fido2.server.dto.common.ServerResponseDto;
+import com.sktelecom.authentication.fido2.server.dto.credential.CredentialIdDto;
 import com.sktelecom.authentication.fido2.server.dto.credential.CredentialIdListResponseDto;
+import com.sktelecom.authentication.fido2.server.dto.credential.CredentialInfoListResponseDto;
+import com.sktelecom.authentication.fido2.server.dto.credential.CredentialInfoResponseDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationOptionsServerRequestDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultsServerRequestDto;
@@ -49,4 +53,36 @@ public interface WebAuthnRpRestClient {
      * @return server response from WebAuthn server containing list of deleted credential ids for the given user id
      */
     ServerResponseDto<CredentialIdListResponseDto> deleteUser(String userId);
+
+    /**
+     * Get credential information associated to user id and credential id
+     * @param userId given user id
+     * @param credentialId given credential id
+     * @return server response from the WebAuthn server containing the credential information
+     */
+    ServerResponseDto<CredentialInfoResponseDto> getUserCredential(String userId, String credentialId);
+
+    /**
+     * Get list of credential information associated to the user id
+     * @param userId given user id
+     * @return server response from the WebAuthn server containing list of the credential information
+     */
+    ServerResponseDto<CredentialInfoListResponseDto> getUserCredentials(String userId);
+
+    /**
+     * Update credential status
+     * @param userId given user id
+     * @param credentialId given credential id
+     * @param status to be credential status
+     * @return server response form the WebAuthn server containing credential id which state was successfully updated
+     */
+    ServerResponseDto<CredentialIdDto> updateCredentialStatus(String userId, String credentialId, CredentialStatusDto status);
+
+    /**
+     * Delete a credential
+     * @param userId user id of the credential owner
+     * @param credentialId credential id to delete
+     * @return server response from the WebAuthn server containing credential id which is deleted successfully
+     */
+    ServerResponseDto<CredentialIdDto> deleteCredential(String userId, String credentialId);
 }
