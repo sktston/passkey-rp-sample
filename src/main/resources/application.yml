@@ -26,4 +26,6 @@ webauthn:
       registration-response: /${webauthn.server.api-version}/registration/response
       authentication-request: /${webauthn.server.api-version}/authentication/request
       authentication-response: /${webauthn.server.api-version}/authentication/response
-      delete-user: /${webauthn.server.api-version}/users/{userId}
+      user: /${webauthn.server.api-version}/users/{userId}
+      user-credential: /${webauthn.server.api-version}/users/{userId}/credentials/{credentialId}
+      user-credentials: /${webauthn.server.api-version}/users/{userId}/credentials

@@ -4,8 +4,13 @@ import com.sktelecom.authentication.fido2.server.dto.authentication.Authenticati
 import com.sktelecom.authentication.fido2.server.dto.authentication.AuthenticationResultDto;
 import com.sktelecom.authentication.fido2.server.dto.authentication.AuthenticationResultsServerRequestDto;
 import com.sktelecom.authentication.fido2.server.dto.common.ChallengeDto;
+import com.sktelecom.authentication.fido2.server.dto.common.CredentialStatusDto;
 import com.sktelecom.authentication.fido2.server.dto.common.ServerResponseDto;
+import com.sktelecom.authentication.fido2.server.dto.credential.CredentialIdDto;
 import com.sktelecom.authentication.fido2.server.dto.credential.CredentialIdListResponseDto;
+import com.sktelecom.authentication.fido2.server.dto.credential.CredentialInfoListResponseDto;
+import com.sktelecom.authentication.fido2.server.dto.credential.CredentialInfoResponseDto;
+import com.sktelecom.authentication.fido2.server.dto.credential.CredentialStatusUpdateDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationOptionsServerRequestDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultsServerRequestDto;
@@ -31,7 +36,9 @@ public class WebAuthnRpRestClientImpl implements WebAuthnRpRestClient {
     private String registrationResponseUrl;
     private String authenticationRequestUrl;
     private String authenticationResponseUrl;
-    private String deleteUserUrl;
+    private String userUrl;
+    private String userCredentialUrl;
+    private String userCredentialsUrl;
 
     public WebAuthnRpRestClientImpl(WebAuthnProperties webauthnProperties, RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -87,9 +94,55 @@ public class WebAuthnRpRestClientImpl implements WebAuthnRpRestClient {
     public ServerResponseDto<CredentialIdListResponseDto> deleteUser(String userId) {
         // @formatter:off
         ResponseEntity<ServerResponseDto<CredentialIdListResponseDto>> response =
-            restTemplate.exchange(deleteUserUrl, HttpMethod.DELETE, HttpEntity.EMPTY,
+            restTemplate.exchange(userUrl, HttpMethod.DELETE, HttpEntity.EMPTY,
                 new ParameterizedTypeReference<>() {
                 }, userId);
+        // @formatter:on
+        return response.getBody();
+    }
+
+    @Override
+    public ServerResponseDto<CredentialInfoResponseDto> getUserCredential(String userId, String credentialId) {
+        // @formatter:off
+        ResponseEntity<ServerResponseDto<CredentialInfoResponseDto>> response =
+            restTemplate.exchange(userCredentialUrl, HttpMethod.GET, HttpEntity.EMPTY,
+                new ParameterizedTypeReference<>() {
+                }, userId, credentialId);
+        // @formatter:on
+        return response.getBody();
+    }
+
+    @Override
+    public ServerResponseDto<CredentialInfoListResponseDto> getUserCredentials(String userId) {
+        // @formatter:off
+        ResponseEntity<ServerResponseDto<CredentialInfoListResponseDto>> response =
+            restTemplate.exchange(userCredentialsUrl, HttpMethod.GET, HttpEntity.EMPTY,
+                new ParameterizedTypeReference<>() {
+                }, userId);
+        // @formatter:on
+        return response.getBody();
+    }
+
+    @Override
+    public ServerResponseDto<CredentialIdDto> updateCredentialStatus(String userId, String credentialId,
+        CredentialStatusDto status) {
+        // @formatter:off
+        ResponseEntity<ServerResponseDto<CredentialIdDto>> response =
+            restTemplate.exchange(userCredentialUrl, HttpMethod.PATCH,
+                new HttpEntity<>(new CredentialStatusUpdateDto(status)),
+                new ParameterizedTypeReference<>() {
+                }, userId, credentialId);
+        // @formatter:on
+        return response.getBody();
+    }
+
+    @Override
+    public ServerResponseDto<CredentialIdDto> deleteCredential(String userId, String credentialId) {
+        // @formatter:off
+        ResponseEntity<ServerResponseDto<CredentialIdDto>> response =
+            restTemplate.exchange(userCredentialUrl, HttpMethod.DELETE, HttpEntity.EMPTY,
+                new ParameterizedTypeReference<>() {
+                }, userId, credentialId);
         // @formatter:on
         return response.getBody();
     }
@@ -103,7 +156,11 @@ public class WebAuthnRpRestClientImpl implements WebAuthnRpRestClient {
             + serverProperties.getUrlPath().getAuthenticationRequest();
         this.authenticationResponseUrl = serverProperties.getBaseUrl()
             + serverProperties.getUrlPath().getAuthenticationResponse();
-        this.deleteUserUrl = serverProperties.getBaseUrl()
-            + serverProperties.getUrlPath().getDeleteUser();
+        this.userUrl = serverProperties.getBaseUrl()
+            + serverProperties.getUrlPath().getUser();
+        this.userCredentialUrl = serverProperties.getBaseUrl()
+            + serverProperties.getUrlPath().getUserCredential();
+        this.userCredentialsUrl = serverProperties.getBaseUrl()
+            + serverProperties.getUrlPath().getUserCredentials();
     }
 }

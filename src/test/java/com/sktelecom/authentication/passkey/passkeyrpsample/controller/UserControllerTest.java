@@ -34,6 +34,7 @@ public class UserControllerTest extends MockMvcControllerBase {
     @Test
     void deleteUser() throws Exception {
         String givenUserId = "u_TtqmR8hucZGet9CcM6TREv031Bvsz6WKpo0ntBgDE";
+        // @formatter:off
         when(userService.deleteUser(givenUserId))
             .thenReturn(Arrays.asList("KwiyRhxUYzJbrEVg9_XPYfjDUYCAwgV1_2fo7IwRRMo", "kINIXbwEY3WXYwP71tiGCbqGPoTgRfCYFWxopvDKTxc"));
 
@@ -46,6 +47,7 @@ public class UserControllerTest extends MockMvcControllerBase {
             .andExpect(jsonPath("$.credentials", hasSize(2)))
             .andExpect(jsonPath("$.credentials", hasItem("KwiyRhxUYzJbrEVg9_XPYfjDUYCAwgV1_2fo7IwRRMo")))
             .andExpect(jsonPath("$.credentials", hasItem("kINIXbwEY3WXYwP71tiGCbqGPoTgRfCYFWxopvDKTxc")));
+        // @formatter:on
     }
 
 }

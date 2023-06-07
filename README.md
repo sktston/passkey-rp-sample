@@ -68,19 +68,21 @@ Discover more commands with `./graldew tasks`.
 
 ### Passkey Sample RP Server Properties
 
-| Name                                             | Description                                                       | Default Value                                             |
-|--------------------------------------------------|-------------------------------------------------------------------|-----------------------------------------------------------|
-| conformance.base-url                             | Your (sample) web application base URL, for interop web app.      | `http://localhost:8081`                                   |
-| conformance.vendor-name                          | Display vendor name for the WebAuthn server, for interop web app. | `SK Telecom`                                              |
-| webauthn.rp.id                                   | [Relying Party (RP) ID](https://w3c.github.io/webauthn/#rp-id)    | `localhost`                                               |
-| webauthn.server.api-version                      | WebAuthn Server API version.                                      | `v1`                                                      |
-| webauthn.server.base-url                         | WebAuthn Server Base URL, please refer target server url.         | `http://localhost:8080`                                   |
-| webauthn.server.url-path.registration-request    | Registration request endpoint.                                    | `/${webauthn.server.api-version}/registration/request`    |
-| webauthn.server.url-path.registration-response   | Registration response endpoint.                                   | `/${webauthn.server.api-version}/registration/response`   |
-| webauthn.server.url-path.authentication-request  | Authentication request endpoint.                                  | `/${webauthn.server.api-version}/authentication/request`  |
-| webauthn.server.url-path.authentication-response | Authentication response endpoint.                                 | `/${webauthn.server.api-version}/authentication/response` |
-| webauthn.server.url-path.delete-user             | User deletion endpoint.                                           | `/${webauthn.server.api-version}/users/{userId}`          |
-| webauthn.server.oauth2-protected                 | Whether the WebAuthn server API protected with OAuth2             | `false`                                                   |
+| Name                                             | Description                                                       | Default Value                                                               |
+|--------------------------------------------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| conformance.base-url                             | Your (sample) web application base URL, for interop web app.      | `http://localhost:8081`                                                     |
+| conformance.vendor-name                          | Display vendor name for the WebAuthn server, for interop web app. | `SK Telecom`                                                                |
+| webauthn.rp.id                                   | [Relying Party (RP) ID](https://w3c.github.io/webauthn/#rp-id)    | `localhost`                                                                 |
+| webauthn.server.api-version                      | WebAuthn Server API version.                                      | `v1`                                                                        |
+| webauthn.server.base-url                         | WebAuthn Server Base URL, please refer target server url.         | `http://localhost:8080`                                                     |
+| webauthn.server.url-path.registration-request    | Registration request endpoint.                                    | `/${webauthn.server.api-version}/registration/request`                      |
+| webauthn.server.url-path.registration-response   | Registration response endpoint.                                   | `/${webauthn.server.api-version}/registration/response`                     |
+| webauthn.server.url-path.authentication-request  | Authentication request endpoint.                                  | `/${webauthn.server.api-version}/authentication/request`                    |
+| webauthn.server.url-path.authentication-response | Authentication response endpoint.                                 | `/${webauthn.server.api-version}/authentication/response`                   |
+| webauthn.server.url-path.user                    | User endpoint.                                                    | `/${webauthn.server.api-version}/users/{userId}`                            |
+| webauthn.server.url-path.user-credential         | User credential endpoint.                                         | `/${webauthn.server.api-version}/users/{userId}/credentials/{credentialId}` |
+| webauthn.server.url-path.user-credentials        | Credentials associated to the user endpoint.                      | `/${webauthn.server.api-version}/users/{userId}/credentials`                |
+| webauthn.server.oauth2-protected                 | Whether the WebAuthn server API protected with OAuth2             | `false`                                                                     |
 
 ### Spring OAuth2 Client Properties
 

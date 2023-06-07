@@ -3,6 +3,7 @@ package com.sktelecom.authentication.passkey.passkeyrpsample.configuration;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.cfg.ConstructorDetector;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import java.time.Duration;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,7 @@ public class ConformanceServerConfiguration {
         // create custom object mapper to use properties based deserialization
         return new ObjectMapper()
             .registerModule(new ParameterNamesModule())
+            .registerModule(new JavaTimeModule())
             .setSerializationInclusion(Include.NON_NULL)
             .setConstructorDetector(ConstructorDetector.USE_PROPERTIES_BASED);
     }
