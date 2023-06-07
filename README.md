@@ -105,7 +105,7 @@ spring:
             client-secret: your-client-secret # replace here
         provider:
           sktelecom:
-            token-uri: https://daplatform.kr/oauth2/token # set oauth2 server token uri
+            token-uri: https:/example.com/oauth2/token # set real oauth2 server token endpoint uri
 ```
 
 Note that you **MUST** register your application to get `client_id` and `client_secret` for WebAuthn server API authorization.
