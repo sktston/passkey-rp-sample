@@ -7,7 +7,8 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @SuperBuilder
 public class AssertionOptionsServerResponse extends AssertionOptions {
-    private Status status;
+    @Builder.Default
+    private Status status = Status.OK;
     @Builder.Default
     private String errorMessage = "";
 }

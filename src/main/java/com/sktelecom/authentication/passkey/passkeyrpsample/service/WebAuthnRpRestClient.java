@@ -5,6 +5,7 @@ import com.sktelecom.authentication.fido2.server.dto.authentication.Authenticati
 import com.sktelecom.authentication.fido2.server.dto.authentication.AuthenticationResultsServerRequestDto;
 import com.sktelecom.authentication.fido2.server.dto.common.ChallengeDto;
 import com.sktelecom.authentication.fido2.server.dto.common.ServerResponseDto;
+import com.sktelecom.authentication.fido2.server.dto.credential.CredentialIdListResponseDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationOptionsServerRequestDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultDto;
 import com.sktelecom.authentication.fido2.server.dto.registration.RegistrationResultsServerRequestDto;
@@ -41,4 +42,11 @@ public interface WebAuthnRpRestClient {
      */
     ServerResponseDto<AuthenticationResultDto> postAuthenticationResponse(
         AuthenticationResultsServerRequestDto request);
+
+    /**
+     * Delete given user and associated user's credential
+     * @param userId user id intended to delete from the WebAuthn server
+     * @return server response from WebAuthn server containing list of deleted credential ids for the given user id
+     */
+    ServerResponseDto<CredentialIdListResponseDto> deleteUser(String userId);
 }
