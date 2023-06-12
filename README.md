@@ -113,6 +113,11 @@ For SK telecom Passkey Platform, the `client_id` **MUST** be identical to your [
 
 You would implement your own OAuth2 Client features instead of using Spring Security OAuth2 Client, and it's up to your choice.
 
+## License
+
+Passkey Sample Relying Party Application is Open Source software released under
+the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0.html).
+
 ## Contact Us
 
 If you hae any other questions or concerns, please contact [kieun.shin@sk.com](mailto:kieun.shin@sk.com).
