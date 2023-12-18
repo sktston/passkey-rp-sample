@@ -17,6 +17,7 @@
 package com.sktelecom.authentication.passkey.passkeyrpsample.configuration;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.cfg.ConstructorDetector;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -49,7 +50,8 @@ public class ConformanceServerConfiguration {
             .registerModule(new ParameterNamesModule())
             .registerModule(new JavaTimeModule())
             .setSerializationInclusion(Include.NON_NULL)
-            .setConstructorDetector(ConstructorDetector.USE_PROPERTIES_BASED);
+            .setConstructorDetector(ConstructorDetector.USE_PROPERTIES_BASED)
+            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     @Bean
