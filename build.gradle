@@ -45,7 +45,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
-    implementation files('libs/server-dto-1.5.0.jar')
+    implementation files('libs/server-dto-1.8.4.jar')
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'

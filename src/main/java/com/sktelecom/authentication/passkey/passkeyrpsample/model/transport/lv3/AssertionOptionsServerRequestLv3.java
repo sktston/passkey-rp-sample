@@ -17,7 +17,9 @@
 package com.sktelecom.authentication.passkey.passkeyrpsample.model.transport.lv3;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerPublicKeyCredentialHints;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerUserVerificationRequirement;
+import java.util.List;
 import lombok.Data;
 
 @Data
@@ -25,5 +27,6 @@ import lombok.Data;
 public class AssertionOptionsServerRequestLv3 {
     private String username;
     private ServerUserVerificationRequirement userVerification;
+    private final List<ServerPublicKeyCredentialHints> hints;
     Long timeout;
 }
