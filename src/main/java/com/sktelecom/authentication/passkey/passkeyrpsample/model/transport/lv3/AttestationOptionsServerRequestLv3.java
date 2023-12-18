@@ -19,6 +19,8 @@ package com.sktelecom.authentication.passkey.passkeyrpsample.model.transport.lv3
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerAttestationConveyancePreference;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerAuthenticatorSelectionCriteria;
+import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerPublicKeyCredentialHints;
+import java.util.List;
 import javax.validation.constraints.NotBlank;
 import lombok.Data;
 
@@ -31,6 +33,7 @@ public class AttestationOptionsServerRequestLv3 {
     private String displayName;
     private ServerAuthenticatorSelectionCriteria authenticatorSelection;
     private ServerAttestationConveyancePreference attestation;
+    private List<ServerPublicKeyCredentialHints> hints;
     Boolean excludeCredentials;
     Long timeout;
 }
