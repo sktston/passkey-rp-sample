@@ -7,6 +7,9 @@ pipeline {
     options {
         ansiColor('xterm')
     }
+    tools {
+        jdk 'java11'
+    }
     stages {
         stage('Build') {
             steps {
