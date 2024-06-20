@@ -25,13 +25,11 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface AssertionOptionsServerRequestMapper {
-    @Mapping(target = "attestation", ignore = true)
     @Mapping(target = "hints", ignore = true)
     @Mapping(target = "userId", source = "username")
     @Mapping(target = "timeout", constant = "300000L")
     AuthenticationOptionsServerRequestDto toWebauthnServerDto(AssertionOptionsServerRequest rpServer);
 
-    @Mapping(target = "attestation", ignore = true)
     @Mapping(target = "userId", source = "username")
     AuthenticationOptionsServerRequestDto toWebauthnServerDtoLv3(AssertionOptionsServerRequestLv3 rpServer);
 
