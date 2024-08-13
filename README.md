@@ -3,10 +3,13 @@
 ## Introduction
 
 This repository is for sample [WebAuthn Relying Party (RP)](https://w3c.github.io/webauthn/#webauthn-relying-party) web application based on the Spring Boot Framework.
-This application does rely on the [SK telecom's Passkey Platform Server](https://passkey.daplatform.kr/docs/api.html) to implement WebAuthn (FIDO2) and Passkey features.
-By design, most of the features are implemented in the [SK telecom's Passkey Platform Server](https://passkey.daplatform.kr/docs/api.html) and RPs simply introduce the features by integrating it.
+This application does rely on the [SK Telecom's Passkey Platform Server](https://passkey.sktelecom.com) to implement WebAuthn (FIDO2) and Passkey features.
+By design, most of the features are implemented in the [SK Telecom's Passkey Platform Server](https://passkey.sktelecom.com) and RPs simply introduce the features by integrating it.
 
-We have designed and implemented this application so that any RP developers can understand the way how to integrate with [SK telecom's Passkey Platform](https://passkey.daplatform.kr/docs/api.html) easily.
+We have designed and implemented this application so that any RP developers can understand the way how to integrate with [SK Telecom's Passkey Server](https://passkey.sktelecom.com) easily.
+
+Learn [more](https://api.passkey-sktelecom.com/docs/api.html) about how to integrate passkey features into your services with SK Telecom's Passkey Platform.
+
 > **IMPORTANT**: You need to carefully design and implement WebAuthn and Passkey integration if you plan to introduce them to your real products.
 > Again, this sample is for demonstration and testing purpose. By doing so, most of the registration, authentication options are populated in the client side,
 > which is originally intended for backend server's job. You need to define your own registration, authentication policy for your cases and choose appropriate options for that policy. 
@@ -24,7 +27,7 @@ _You don't have to modify any codes for this interop web app. All you need to do
 ### Native Application Supports
 
 WebAuthn APIs are also available for native applications running on iOS, Android etc. The RP web application **MUST** declare that it owns and controls the native applications by including such associations.
-In this sample application, the website contains the [such association](src/main/resources/static/.well-known/assetlinks.json) for SK telecom's sample Android application.
+In this sample application, the website contains the [such association](src/main/resources/static/.well-known/assetlinks.json) for SK Telecom's sample Android application.
 If you have your own Android application, you could simply replace values in `package_name` and `sha256_cert_fingerprints` with your own.
 
 ## Quick Start
