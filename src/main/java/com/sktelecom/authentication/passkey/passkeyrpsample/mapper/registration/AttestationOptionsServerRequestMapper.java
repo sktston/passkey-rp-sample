@@ -29,6 +29,7 @@ import org.mapstruct.Mapping;
 })
 public interface AttestationOptionsServerRequestMapper {
     @Mapping(target = "hints", ignore = true)
+    @Mapping(target = "attestationFormats", ignore = true)
     @Mapping(target = "user", source = "rpServer")
     @Mapping(target = "excludeCredentials", constant = "true")
     @Mapping(target = "timeout", constant = "300000L")
