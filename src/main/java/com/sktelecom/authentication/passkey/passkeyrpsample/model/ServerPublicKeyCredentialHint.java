@@ -28,7 +28,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public enum ServerPublicKeyCredentialHints {
+public enum ServerPublicKeyCredentialHint {
     SECURITY_KEY("security-key"),
     CLIENT_DEVICE("client-device"),
     HYBRID("hybrid");
@@ -37,11 +37,11 @@ public enum ServerPublicKeyCredentialHints {
     @JsonValue
     private final String value;
 
-    private static final Map<String, ServerPublicKeyCredentialHints> MAP_BY_VALUE =
+    private static final Map<String, ServerPublicKeyCredentialHint> MAP_BY_VALUE =
         Collections.unmodifiableMap(Stream.of(values())
-            .collect(Collectors.toMap(ServerPublicKeyCredentialHints::getValue, Function.identity())));
+            .collect(Collectors.toMap(ServerPublicKeyCredentialHint::getValue, Function.identity())));
 
-    public static ServerPublicKeyCredentialHints find(String value) {
+    public static ServerPublicKeyCredentialHint find(String value) {
         return Optional.ofNullable(MAP_BY_VALUE.get(value)).orElseThrow(NoSuchElementException::new);
     }
 }

@@ -17,8 +17,10 @@
 package com.sktelecom.authentication.passkey.passkeyrpsample.model.transport;
 
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerAttestationConveyancePreference;
+import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerAttestationFormatIdentifier;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerAuthenticatorSelectionCriteria;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerPublicKeyCredentialDescriptor;
+import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerPublicKeyCredentialHint;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerPublicKeyCredentialParameters;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerPublicKeyCredentialRpEntity;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerPublicKeyCredentialUserEntity;
@@ -40,5 +42,7 @@ public class AttestationOptions extends ServerOptions {
     private List<ServerPublicKeyCredentialDescriptor> excludeCredentials;
     private ServerAuthenticatorSelectionCriteria authenticatorSelection;
     private ServerAttestationConveyancePreference attestation;
+    private List<ServerPublicKeyCredentialHint> hints;
+    private List<ServerAttestationFormatIdentifier> attestationFormats;
     private Map<String, Object> extensions;
 }

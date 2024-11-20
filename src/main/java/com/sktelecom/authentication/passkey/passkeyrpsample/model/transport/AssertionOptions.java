@@ -17,6 +17,7 @@
 package com.sktelecom.authentication.passkey.passkeyrpsample.model.transport;
 
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerPublicKeyCredentialDescriptor;
+import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerPublicKeyCredentialHint;
 import com.sktelecom.authentication.passkey.passkeyrpsample.model.ServerUserVerificationRequirement;
 import java.util.Collections;
 import java.util.List;
@@ -37,5 +38,6 @@ public class AssertionOptions extends ServerOptions {
     private List<ServerPublicKeyCredentialDescriptor> allowCredentials = Collections.emptyList();
     @Builder.Default
     private ServerUserVerificationRequirement userVerification = ServerUserVerificationRequirement.PREFERRED;
+    private List<ServerPublicKeyCredentialHint> hints;
     private Map<String, Object> extensions;
 }
